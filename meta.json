@@ -1,0 +1,29 @@
+{
+  "scope": "flow",
+  "today": {
+    "text": "every install meets SIGN UP FREE, a Welcome form and Agree & Create Account before anything plays, then the same Get full access to DW+ sheet",
+    "source": "audit_frames"
+  },
+  "prices": {
+    "monthly": "17,99 €",
+    "yearly": "119,99 € for the first year, then 179,00 €",
+    "full_access": "199,99 € for the first year, then 299,00 €",
+    "trial": "none",
+    "source": "Daily Wire iOS paywall, EU storefront, recorded 16 November 2026"
+  },
+  "asks": [],
+  "paywall": { "headline": "Get full access to DW+", "uses_answers": false },
+  "rebuild": "the carousel opens on the slide that matches the trailer, one screen of their own lineup follows the shows they pick, and DW+ opens on the show they came for",
+  "flows": [
+    { "channel": "Google", "campaign": "Real History with Matt Walsh", "headline": "Watch all of Real History on DW+", "paywall_opens_on": "Real History" },
+    { "channel": "Google", "campaign": "The Pendragon Cycle: Rise of the Merlin", "headline": "Watch The Pendragon Cycle on DW+", "paywall_opens_on": "The Pendragon Cycle" },
+    { "channel": "App Store", "headline": "The Ben Shapiro Show, and everything else on DW+", "paywall_opens_on": "the first show they pick" }
+  ],
+  "ideas": [
+    { "n": 1, "title": "Let them in before you ask for an account", "screen": "Welcome", "outcome": "CR +5–10% · ARPU +10–17%" },
+    { "n": 2, "title": "Name the show they came for in the DW+ headline", "screen": "DW+", "outcome": "CR +15–20%" },
+    { "n": 3, "title": "Ask whose shows they want, then read it back", "screen": "Loader", "outcome": "CR +10–15%" },
+    { "n": 4, "title": "Ask for notifications after DW+, not right before it", "screen": "Home", "outcome": "CR +10–15%" },
+    { "n": 5, "title": "Put 4.5 stars from 17K ratings next to the button", "screen": "DW+", "outcome": "CR +10–15%" }
+  ]
+}

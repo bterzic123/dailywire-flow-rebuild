@@ -1,0 +1,901 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
+<meta name="color-scheme" content="light">
+<title>Growth Audit — Daily Wire</title>
+<meta name="description" content="Daily Wire's ads each sell one show, and every install meets the same account wall and the same DW+ sheet. Here is a first launch that leads with the show they came for, built in Daily Wire's own design.">
+<link rel="icon" href="img/icon.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Libre+Franklin:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* Shell: white, Daily Wire's near-black ink and the red of their MOST POPULAR tag. Phone: the app's #0C0B0B, outlined cards, square buttons. */
+:root{
+  color-scheme:only light;
+  --ink:#0C0B0B; --ink-soft:#262424; --muted:rgba(12,11,11,.62); --faint:rgba(12,11,11,.22); --line:rgba(12,11,11,.09);
+  --soft:#FAFAFA; --cream:#F2F2F1; --cream2:#E7E7E6; --white:#FFFFFF;
+  --gold:#D63534; --gold-lift:#A8221F; --gold-soft:#FBE2E1;
+  --mark:linear-gradient(transparent 60%,rgba(214,53,52,.30) 60%);
+  --f:'Inter',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif;
+  --fp:'Libre Franklin',-apple-system,'Helvetica Neue',Arial,sans-serif;
+  --ease:cubic-bezier(.16,1,.3,1);
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
+html,body{overflow-x:clip}
+body{font-family:var(--f);color:var(--ink-soft);background:var(--white);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+a{color:inherit}
+img,video{display:block}
+em.g{font-style:normal;background:var(--mark);padding:0 2px}
+.hero em.g{background:none;color:#FF5B57}
+.wrap{max-width:1200px;margin:0 auto;padding:0 40px}
+@media(max-width:700px){.wrap{padding:0 16px}}
+
+/* ---- top bar: a floating frosted pill ---- */
+.nav{position:sticky;top:0;z-index:50;padding:12px 12px 0}
+.nav-in{max-width:1200px;margin:0 auto;padding:0 10px 0 22px;height:60px;display:flex;align-items:center;gap:14px;background:rgba(242,242,241,.86);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-radius:999px;box-shadow:0 1px 0 var(--line)}
+@media(max-width:700px){.nav-in{padding:0 8px 0 16px;gap:8px}}
+.logo{width:150px;height:16px;background:var(--ink);-webkit-mask:url(img/wordmark.png) left center/contain no-repeat;mask:url(img/wordmark.png) left center/contain no-repeat;flex:none}
+@media(max-width:400px){.logo{width:110px}}
+.nav-in .sep{width:1px;height:20px;background:var(--faint)}
+.nav-in .lbl{font-size:14px;color:var(--muted);white-space:nowrap}
+@media(max-width:700px){.nav-in .sep,.nav-in .lbl{display:none}}
+.tabs{margin-left:auto;display:flex;gap:2px}
+.tabs button{height:40px;padding:0 16px;border-radius:999px;font-size:15px;font-weight:500;color:var(--muted)}
+@media(max-width:400px){.tabs button{padding:0 11px;font-size:14px}}
+.tabs button.on{background:var(--white);color:var(--ink);box-shadow:0 1px 3px rgba(12,11,11,.1)}
+.demo{height:44px;padding:0 20px;border-radius:999px;background:var(--ink);color:#fff;font-size:15px;font-weight:500;display:flex;align-items:center;text-decoration:none;white-space:nowrap}
+.demo:hover{background:#000}
+@media(max-width:560px){.nav .demo{display:none}}
+
+.view{display:none}.view.on{display:block}
+
+/* ======================= OVERVIEW: the app's own photography as the hero frame ======================= */
+.dw-bg{background:#0C0B0B}
+.hero-frame{margin:-72px 12px 0;border-radius:20px;overflow:hidden;position:relative;color:#fff;min-height:720px;display:flex;align-items:flex-end}
+.hero-photos{position:absolute;inset:0;display:grid;grid-template-columns:repeat(4,1fr);opacity:.42;filter:grayscale(.35) contrast(1.05)}
+.hero-photos img{width:100%;height:100%;object-fit:cover;object-position:center 20%}
+.hero-frame::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(12,11,11,.94) 0%,rgba(12,11,11,.72) 52%,rgba(12,11,11,.25) 100%);pointer-events:none}
+.ticker{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:1}
+.ticker span{position:absolute;left:100%;white-space:nowrap;font:700 24px/1 var(--fp);letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.12);animation:fly linear infinite}
+@keyframes fly{to{transform:translateX(calc(-100vw - 120%))}}
+@media(prefers-reduced-motion:reduce){.ticker span{animation:none;left:auto;right:10%}}
+.hero-in{position:relative;z-index:2;width:100%;display:grid;grid-template-columns:1.25fr .75fr;gap:30px;align-items:end;padding-top:150px;padding-bottom:56px}
+@media(max-width:900px){.hero-frame{min-height:0}.hero-in{grid-template-columns:1fr;padding-top:120px;padding-bottom:36px}}
+.eyebrow{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.75);font-weight:500}
+.hero h1{font-size:clamp(40px,5.6vw,72px);line-height:1.03;font-weight:600;letter-spacing:-.03em;margin-top:16px;max-width:800px}
+.hero .lead{font-size:clamp(17px,1.7vw,19px);line-height:1.55;margin-top:20px;max-width:660px;color:rgba(255,255,255,.86)}
+.cta-row{display:flex;gap:10px;align-items:center;margin-top:28px;flex-wrap:wrap}
+.btn-w{height:50px;padding:0 24px;border-radius:999px;background:#fff;color:var(--ink);font-size:17px;font-weight:500;display:inline-flex;align-items:center;gap:10px}
+.btn-w:hover{background:var(--cream)}
+.btn-o{height:50px;padding:0 22px;border-radius:999px;background:rgba(255,255,255,.14);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);color:#fff;font-size:17px;font-weight:500;display:inline-flex;align-items:center;gap:8px}
+.btn-o:hover{background:rgba(255,255,255,.24)}
+@media(max-width:420px){.btn-w,.btn-o{font-size:15px;padding:0 16px;white-space:nowrap}}
+.byline{margin-top:16px;font-size:14px;color:rgba(255,255,255,.66)}
+.fan{position:relative;height:400px}
+.fan img{position:absolute;width:176px;aspect-ratio:9/19;object-fit:cover;object-position:top;border-radius:18px;border:4px solid #2C2B2B;box-shadow:0 24px 60px rgba(0,0,0,.5)}
+.fan .j{width:84px;height:84px;border-radius:22px;border:0;aspect-ratio:auto;left:40%;bottom:0;z-index:4}
+@media(max-width:900px){.fan{height:280px}.fan img{width:122px;border-width:3px;border-radius:13px}.fan .j{width:62px;height:62px;border-radius:16px}}
+
+.stats{margin:12px 12px 0;border-radius:20px;background:var(--cream)}
+.stats .wrap{display:grid;grid-template-columns:repeat(4,1fr)}
+.stat{padding:30px 18px;text-align:center;border-left:1px solid var(--line)}
+.stat:first-child{border-left:0}
+.stat b{display:block;font-size:38px;font-weight:600;letter-spacing:-.03em;line-height:1.1;color:var(--ink)}
+.stat b i{font-style:normal;color:var(--gold)}
+.stat span{display:block;font-size:14px;color:var(--muted);margin-top:6px;line-height:1.35}
+@media(max-width:800px){.stats .wrap{grid-template-columns:repeat(2,1fr)}.stat:nth-child(3){border-left:0}.stat{border-top:1px solid var(--line)}.stat:nth-child(-n+2){border-top:0}}
+
+.sec{padding:96px 0}
+@media(max-width:700px){.sec{padding:64px 0}}
+.sec-h{font-size:clamp(30px,3.9vw,48px);line-height:1.08;font-weight:600;letter-spacing:-.03em;max-width:900px;color:var(--ink)}
+.sec-h b{font-weight:600;color:var(--muted)}
+.sec-p{font-size:18px;line-height:1.6;color:var(--muted);margin-top:18px;max-width:800px}
+.kick{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:500;margin-bottom:14px}
+
+.about{display:grid;grid-template-columns:1.2fr 1fr;gap:48px;align-items:start}
+@media(max-width:860px){.about{grid-template-columns:1fr}}
+.flowp{margin-top:26px;display:flex;flex-direction:column;gap:10px}
+.flowp div{display:flex;gap:12px;align-items:flex-start;font-size:16px;color:var(--ink-soft);line-height:1.45}
+.flowp i{font-style:normal;flex:none;width:22px;height:22px;border-radius:50%;background:var(--gold);color:#fff;display:grid;place-items:center;font-size:12px;margin-top:1px}
+.flowp b{font-weight:600;color:var(--ink)}
+.flowp .k2{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:500;margin-top:8px}
+.note{background:var(--cream);border-radius:16px;padding:22px 24px}
+.note h4{font-size:17px;font-weight:600;color:var(--ink);margin-bottom:6px;display:flex;gap:10px;align-items:center}
+.note h4 i{font-style:normal;width:26px;height:26px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font-size:12px}
+.note p{font-size:15px;color:var(--muted);line-height:1.55}
+.note+.note{margin-top:10px}
+
+/* your ads */
+.lib{background:var(--cream);border-radius:20px;padding:32px;margin-top:20px;display:grid;grid-template-columns:1fr 1.1fr;gap:32px;align-items:start}
+.lib:first-of-type{margin-top:44px}
+@media(max-width:900px){.lib{grid-template-columns:1fr;padding:16px}}
+.vid{position:relative;border-radius:14px;overflow:hidden;background:#000;display:grid;place-items:center}
+.vid video{width:100%;max-height:420px;object-fit:contain;background:#000}
+.vid .tag{position:absolute;top:10px;left:10px;background:rgba(255,255,255,.94);color:var(--ink);font-size:11px;font-weight:600;letter-spacing:.06em;padding:5px 10px;border-radius:999px;display:flex;gap:6px;align-items:center}
+.vid .tag::before{content:"";width:8px;height:8px;border-radius:50%;background:#34A853}
+.strip{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:8px}
+.strip img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:8px}
+.strip.tall img{aspect-ratio:9/16}
+.adb .hook{font-size:24px;font-weight:600;letter-spacing:-.01em;line-height:1.3;color:var(--ink)}
+.adb .meta{font-size:13.5px;color:var(--muted);margin-top:10px}
+.adb dl{margin-top:8px;font-size:15px;line-height:1.5}
+.adb dt{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:14px;font-weight:600}
+.adb dd{color:var(--ink-soft)}
+.adb .go{margin-top:20px}
+.adb .go button{height:48px;padding:0 24px;border-radius:999px;background:var(--ink);color:#fff;font-size:15px;font-weight:500}
+.lib-foot{margin-top:16px;font-size:14px;color:var(--muted);line-height:1.55;max-width:880px}
+
+/* the five ideas */
+.list{margin-top:40px;display:flex;flex-direction:column;max-width:980px;border-top:1px solid var(--line)}
+.it{display:grid;grid-template-columns:64px 1fr;gap:18px;padding:26px 6px;cursor:pointer;border-bottom:1px solid var(--line);transition:background .2s}
+.it:hover{background:var(--soft)}
+@media(max-width:600px){.it{grid-template-columns:40px 1fr;gap:10px}}
+.it .em{font-size:22px;font-weight:600;color:var(--muted);letter-spacing:-.02em;padding-top:2px}
+.it h3{font-size:22px;font-weight:600;letter-spacing:-.02em;line-height:1.3;color:var(--ink)}
+.it p{font-size:15.5px;color:var(--muted);margin-top:6px;line-height:1.55;max-width:780px}
+.row{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-top:12px;flex-wrap:wrap}
+.out{display:inline-flex;align-items:baseline;gap:8px;background:var(--gold-soft);color:#7A1715;padding:5px 12px;border-radius:999px;font-weight:600;font-size:14.5px}
+.out small{font-weight:400;font-size:12.5px}
+.see{font-size:14.5px;color:var(--ink);font-weight:500;text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--faint)}
+
+/* the outcome */
+.outc{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:40px}
+@media(max-width:860px){.outc{grid-template-columns:1fr}}
+.osh{position:relative;overflow:hidden;color:#fff;border-radius:20px;padding:36px 32px;display:flex;flex-direction:column;justify-content:flex-end;min-height:440px}
+.osh>img{position:absolute;left:50%;top:36px;width:70%;max-width:400px;transform:translateX(-50%);border-radius:14px;opacity:.9}
+.osh::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(12,11,11,.97) 40%,rgba(12,11,11,.1) 82%)}
+.osh>*:not(img){position:relative;z-index:2}
+.osh .k{font-size:12px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.7)}
+.osh h3{font-size:30px;font-weight:600;letter-spacing:-.03em;margin-top:8px;line-height:1.15;max-width:460px}
+.osh .nums{display:flex;gap:10px;margin-top:22px;flex-wrap:wrap}
+.osh .nums div{background:rgba(255,255,255,.1);border-radius:16px;padding:14px 20px;min-width:130px}
+.osh .nums b{display:block;font-size:40px;font-weight:600;letter-spacing:-.03em;line-height:1;color:#FF5B57}
+.osh .nums span{font-size:13.5px;color:rgba(255,255,255,.8)}
+.osh .cap{font-size:14.5px;color:rgba(255,255,255,.78);margin-top:18px;line-height:1.5;max-width:470px}
+.dos{display:flex;flex-direction:column;gap:12px}
+.do{background:var(--cream);border-radius:20px;padding:24px 26px;flex:1}
+.do .k{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:500;margin-bottom:6px}
+.do h4{font-size:20px;font-weight:600;letter-spacing:-.02em;color:var(--ink)}
+.do p{font-size:15px;color:var(--muted);margin-top:6px;line-height:1.55}
+.endcta{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-top:40px}
+.btn-k{height:52px;padding:0 26px;border-radius:999px;background:var(--ink);color:#fff;font-size:17px;font-weight:500;display:inline-flex;align-items:center}
+.btn-k:hover{background:#000}
+.btn-l{height:52px;padding:0 24px;border-radius:999px;background:var(--cream);color:var(--ink);font-size:17px;font-weight:500;display:inline-flex;align-items:center;text-decoration:none}
+.foot{font-size:13px;color:var(--muted);line-height:1.6;padding:30px 0 60px;border-top:1px solid var(--line);margin-top:36px}
+
+/* ======================= PROTOTYPE VIEW ======================= */
+.pwv{padding-top:48px;padding-bottom:70px}
+.pwv h1{font-size:clamp(34px,4.6vw,56px);font-weight:600;line-height:1.04;letter-spacing:-.03em;color:var(--ink)}
+.pwv h1 b{font-weight:600;color:var(--muted)}
+.pwv .sub{font-size:18px;color:var(--muted);margin-top:14px;max-width:820px}
+.tools{display:flex;gap:8px;flex-wrap:wrap;margin-top:24px;align-items:center}
+.seg{display:inline-flex;background:var(--cream);border-radius:999px;padding:3px}
+.seg button{height:36px;padding:0 14px;border-radius:999px;font-size:14px;font-weight:500;color:var(--muted)}
+.seg button.on{background:var(--white);color:var(--ink);box-shadow:0 1px 3px rgba(12,11,11,.12)}
+.wt{height:42px;padding:0 18px;border-radius:999px;background:var(--ink);color:#fff;font-size:14.5px;font-weight:500;display:inline-flex;align-items:center;gap:8px}
+.wt.on{background:var(--gold);color:#fff}
+.steps{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.steps button{height:44px;padding:0 16px;border-radius:999px;background:var(--cream);font-size:15px;font-weight:500;color:var(--ink-soft);transition:all .15s}
+.steps button:hover{background:var(--cream2)}
+.steps button.on{background:var(--ink);color:#fff}
+.steps button.td{background:#fff;box-shadow:inset 0 0 0 1.5px var(--faint);color:var(--muted)}
+.steps button.td.on{background:var(--muted);color:#fff;box-shadow:none}
+.stcap{margin-top:14px;font-size:15.5px;color:var(--muted);min-height:24px;max-width:920px}
+.stcap b{font-weight:600;color:var(--ink)}
+.dcap{margin-top:14px;height:0;overflow:hidden;transition:height .25s}
+.dcap.on{height:58px}
+.dcap-in{display:flex;align-items:center;gap:14px;background:var(--ink);color:#fff;border-radius:16px;padding:0 18px;height:58px;font-size:15px}
+.dcap-in .pr{flex:none;width:120px;height:4px;background:rgba(255,255,255,.2);border-radius:2px;overflow:hidden}
+.dcap-in .pr i{display:block;height:100%;width:0;background:#FF5B57}
+.dcap-in span{flex:1}
+@media(max-width:600px){.dcap.on{position:fixed;left:8px;right:8px;bottom:8px;z-index:60;margin:0}}
+.trio{display:flex;gap:28px;justify-content:center;margin-top:26px;--sc:.8}
+@media(max-width:899px){.trio{justify-content:flex-start;overflow-x:auto;scroll-snap-type:x mandatory;padding:0 16px 14px;margin-left:-16px;margin-right:-16px;gap:16px}}
+.tcol{flex:none;display:flex;flex-direction:column;align-items:center;scroll-snap-align:center}
+.apill{display:flex;align-items:center;gap:8px;height:34px;padding:0 14px 0 6px;border-radius:999px;background:var(--cream);font-size:13.5px;font-weight:500;color:var(--ink-soft);margin-bottom:14px;max-width:calc(390px * var(--sc) + 20px);white-space:nowrap;overflow:hidden}
+.apill .mt{height:24px;padding:0 9px;border-radius:99px;background:var(--ink);color:#fff;font-size:11.5px;display:inline-flex;align-items:center;flex:none}
+.apill .mt.ad{background:#1E8E3E}
+.apill .tx{overflow:hidden;text-overflow:ellipsis}
+.pbox{width:calc(390px * var(--sc));height:calc(844px * var(--sc));position:relative}
+.phone{position:absolute;left:0;top:0;width:390px;height:844px;transform:scale(var(--sc));transform-origin:0 0;border-radius:58px;background:#0c0c0c;padding:12px;box-shadow:0 30px 60px rgba(12,11,11,.22),0 0 0 2px #2c2c2c inset}
+.tcol.ring .phone{box-shadow:0 30px 60px rgba(12,11,11,.22),0 0 0 6px var(--ring)}
+.tlab{margin-top:16px;text-align:center;max-width:calc(390px * var(--sc) + 10px)}
+.tlab b{display:block;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);font-weight:600}
+.tlab span{display:block;font-size:14px;color:var(--muted);margin-top:4px;line-height:1.45}
+.finger{position:absolute;z-index:30;width:34px;height:34px;margin:-17px 0 0 -17px;border-radius:50%;background:rgba(255,255,255,.55);box-shadow:0 0 0 2px rgba(12,11,11,.35),0 6px 18px rgba(0,0,0,.35);pointer-events:none;opacity:0;transition:left .38s var(--ease),top .38s var(--ease),transform .12s,opacity .2s}
+.finger.on{opacity:1}.finger.press{transform:scale(.72)}
+
+/* ---- inside the phone: Daily Wire, as the app ships ---- */
+.scr{position:absolute;inset:12px;border-radius:46px;overflow:hidden;color-scheme:only light;
+  --d-bg:#0C0B0B; --d-surf:#141313; --d-surf2:#1E1D1D; --d-ink:#FFFFFF; --d-ink2:rgba(255,255,255,.74); --d-mute:rgba(255,255,255,.5); --d-line:#2B2A2A; --d-sel:#FFFFFF; --d-btn:#F4F4F4; --d-btnt:#0C0B0B; --d-red:#D63534; --d-chip:#FFFFFF; --d-chipt:#0C0B0B;
+  background:var(--d-bg);color:var(--d-ink);font-family:var(--fp);display:flex;flex-direction:column}
+.phone.lt .scr{--d-bg:#FFFFFF; --d-surf:#F6F6F5; --d-surf2:#EDEDEC; --d-ink:#0C0B0B; --d-ink2:rgba(12,11,11,.74); --d-mute:rgba(12,11,11,.5); --d-line:#DCDBDA; --d-sel:#0C0B0B; --d-btn:#0C0B0B; --d-btnt:#FFFFFF; --d-chip:#0C0B0B; --d-chipt:#FFFFFF}
+.sb{height:50px;flex:none;display:flex;align-items:center;justify-content:space-between;padding:0 30px 0 36px;font-size:15px;font-weight:600;font-family:-apple-system,sans-serif;position:relative;z-index:6;color:var(--d-ink)}
+.sb.wh{color:#fff}
+.sb.ov{position:absolute;top:0;left:0;right:0}
+.sb .isl{position:absolute;left:50%;top:11px;width:120px;height:34px;margin-left:-60px;background:#000;border-radius:20px}
+.sb .ic{display:flex;gap:5px;align-items:center}
+.scr-top{flex:none;height:50px;display:flex;align-items:center;padding:0 16px;gap:12px;position:relative;z-index:5}
+.scr-top .ttl{position:absolute;left:0;right:0;text-align:center;font-size:15px;font-weight:600;pointer-events:none}
+.scr-top .bk{width:30px;height:30px;display:grid;place-items:center;color:var(--d-ink)}
+.scr-top .bk svg{width:22px;height:22px}
+.scr-body{flex:1;min-height:0;overflow-y:auto;overflow-x:hidden;scrollbar-width:none;position:relative;padding:0 18px 18px}
+.scr-body::-webkit-scrollbar{display:none}
+.scr-body.col{display:flex;flex-direction:column}
+.scr-foot{flex:none;padding:12px 18px 30px;position:relative;z-index:4;background:var(--d-bg)}
+.scr-foot.sep{box-shadow:0 -1px 0 var(--d-line)}
+.wm{background:var(--d-ink);-webkit-mask:url(img/wordmark.png) center/contain no-repeat;mask:url(img/wordmark.png) center/contain no-repeat}
+.wm.wh{background:#fff}
+.mk{background:var(--d-ink);-webkit-mask:url(img/mark.png) center/contain no-repeat;mask:url(img/mark.png) center/contain no-repeat}
+.d-btn{display:flex;align-items:center;justify-content:center;width:100%;height:52px;border-radius:2px;background:var(--d-btn);color:var(--d-btnt);font:600 13px/1 var(--fp);letter-spacing:.07em;text-transform:uppercase}
+.d-btn[disabled]{opacity:.3;cursor:default}
+.d-ghost{display:flex;align-items:center;justify-content:center;width:100%;height:52px;border-radius:2px;border:1.5px solid var(--d-ink2);color:var(--d-ink);font:600 13px/1 var(--fp);letter-spacing:.07em;text-transform:uppercase;margin-top:10px}
+.toast{position:absolute;left:50%;bottom:120px;transform:translateX(-50%) translateY(10px);background:rgba(255,255,255,.96);color:#0C0B0B;font:600 13px/1.3 var(--f);padding:10px 15px;border-radius:999px;opacity:0;transition:all .25s;pointer-events:none;z-index:40;white-space:nowrap;box-shadow:0 6px 20px rgba(0,0,0,.35)}
+.toast.show{opacity:1;transform:translateX(-50%)}
+.pulse{animation:pulse 1.6s ease-out 2}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(214,53,52,.95)}100%{box-shadow:0 0 0 16px rgba(214,53,52,0)}}
+.fromad{display:inline-flex;gap:7px;align-items:center;height:28px;padding:0 11px;border-radius:999px;background:rgba(52,168,83,.2);color:#7DDB98;font:600 11.5px/1 var(--f)}
+.phone.lt .fromad{color:#137333;background:rgba(52,168,83,.14)}
+
+/* the Google video ad, where the install starts */
+.gad{position:absolute;inset:0;background:#000;color:#fff;font-family:-apple-system,Roboto,sans-serif;display:flex;flex-direction:column}
+.gad .gtop{height:44px;margin-top:50px;display:flex;align-items:center;justify-content:space-between;padding:0 14px;font-size:12px;color:rgba(255,255,255,.75)}
+.gad .gtop b{background:#F9AB00;color:#000;font-size:10.5px;font-weight:700;padding:2px 6px;border-radius:3px;margin-right:6px}
+.gad .gx{width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,.18);display:grid;place-items:center;font-size:12px}
+.gad .gv{flex:1;display:flex;align-items:center;justify-content:center}
+.gad video{width:100%;max-height:420px;object-fit:contain;background:#000}
+.gad .gcard{margin:0 12px 34px;background:#fff;color:#202124;border-radius:16px;padding:12px;display:flex;align-items:center;gap:12px}
+.gad .gcard img{width:48px;height:48px;border-radius:11px}
+.gad .gcard b{display:block;font-size:15px}
+.gad .gcard small{display:block;font-size:12px;color:#5f6368;margin-top:2px}
+.gad .gin{margin-left:auto;height:38px;padding:0 18px;border-radius:999px;background:#1A73E8;color:#fff;font-weight:600;font-size:14px}
+
+/* App Store listing, where the organic install starts */
+.ast{position:absolute;inset:0;background:var(--d-bg);color:var(--d-ink);font-family:-apple-system,sans-serif;display:flex;flex-direction:column}
+.ast .ab{padding:6px 18px 0;overflow:hidden;flex:1}
+.ast .ah{display:flex;gap:14px;align-items:center;margin-top:8px}
+.ast .ah img{width:96px;height:96px;border-radius:22px;border:1px solid var(--d-line)}
+.ast .ah b{display:block;font-size:21px;font-weight:700}
+.ast .ah small{display:block;font-size:13.5px;color:var(--d-mute);margin-top:2px}
+.ast .get{margin-top:10px;height:30px;padding:0 20px;border-radius:999px;background:#0A84FF;color:#fff;font-weight:700;font-size:14px}
+.ast .ar{display:grid;grid-template-columns:repeat(3,1fr);margin-top:18px;border-top:1px solid var(--d-line);border-bottom:1px solid var(--d-line);padding:10px 0;text-align:center}
+.ast .ar div+div{border-left:1px solid var(--d-line)}
+.ast .ar small{display:block;font-size:10px;letter-spacing:.04em;color:var(--d-mute);text-transform:uppercase}
+.ast .ar b{display:block;font-size:19px;font-weight:700;color:var(--d-ink2);margin-top:2px}
+.ast .ar i{display:block;font-style:normal;font-size:10px;color:var(--d-mute)}
+.ast .ash{display:flex;gap:10px;margin-top:16px}
+.ast .ash img{width:104px;border-radius:12px;border:1px solid var(--d-line)}
+
+/* splash + tracking dialog, first, as today */
+.spl{flex:1;display:flex;align-items:center;justify-content:center;background:#0C0B0B}
+.spl .wm{display:block;width:230px;height:22px;background:#fff}
+.sys{position:absolute;inset:0;z-index:20;background:rgba(0,0,0,.5);display:flex;align-items:center;justify-content:center;font-family:-apple-system,sans-serif}
+.sys-in{width:286px;border-radius:26px;background:rgba(40,40,42,.97);color:#fff;padding:20px 18px 14px;text-align:left}
+.phone.lt .sys-in{background:rgba(246,246,248,.98);color:#000}
+.sys-in .ai{width:50px;height:50px;border-radius:12px;background:linear-gradient(135deg,#FFB443,#FF7A2F);display:grid;place-items:center;color:#fff;font-size:22px}
+.sys-in h5{font-size:16.5px;font-weight:600;line-height:1.3;margin-top:14px}
+.sys-in p{font-size:13px;line-height:1.45;opacity:.7;margin-top:8px}
+.sys-in button{display:block;width:100%;height:44px;border-radius:999px;background:rgba(120,120,128,.24);font-size:16px;font-weight:500;margin-top:10px}
+
+/* welcome carousel, their photography */
+.car{flex:1;min-height:0;display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
+.car::-webkit-scrollbar{display:none}
+.sl{flex:none;width:100%;scroll-snap-align:start;position:relative;display:flex;flex-direction:column;justify-content:flex-end;text-align:center;padding:0 22px 6px}
+.sl>img{position:absolute;left:0;right:0;top:0;width:100%;height:76%;object-fit:cover;object-position:center 18%}
+.sl::before{content:"";position:absolute;left:0;right:0;top:44%;height:33%;background:linear-gradient(transparent,var(--d-bg));z-index:1}
+.sl>*:not(img){position:relative;z-index:2}
+.sl .wm{width:196px;height:19px;margin:0 auto 18px}
+.sl .ey{font-size:13px;color:var(--d-ink2)}
+.sl h2{font-size:19px;font-weight:600;line-height:1.25;margin-top:8px}
+.phone.lt .sl::before{background:linear-gradient(transparent,var(--d-bg))}
+.wdots{display:flex;gap:7px;justify-content:center;padding:14px 0 6px;flex:none}
+.wdots i{width:7px;height:7px;border-radius:4px;background:var(--d-mute);transition:width .2s}
+.wdots i.on{width:22px;background:var(--d-ink)}
+.sl .fromad{position:absolute;top:58px;left:50%;transform:translateX(-50%);z-index:3;white-space:nowrap}
+
+/* who do you want to hear from */
+.pk-h{font-size:24px;font-weight:300;line-height:1.25;margin-top:8px;letter-spacing:-.01em}
+.pk-s{font-size:13.5px;line-height:1.5;color:var(--d-ink2);margin-top:8px}
+.pg{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:16px}
+.pt{position:relative;text-align:left;border:1px solid var(--d-line);border-radius:2px;background:var(--d-surf);padding:11px 30px 11px 12px;min-height:70px;color:var(--d-ink);font-family:var(--fp);transition:border-color .15s,transform .12s}
+.pt:active{transform:scale(.97)}
+.pt b{display:block;font-size:14.5px;font-weight:600;line-height:1.2}
+.pt small{display:block;font-size:11px;color:var(--d-mute);margin-top:4px;line-height:1.3}
+.pt.on{border-color:var(--d-sel);box-shadow:inset 0 0 0 1px var(--d-sel)}
+.pt.on::after{content:"";position:absolute;right:8px;top:8px;width:18px;height:18px;border-radius:2px;background:var(--d-sel) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230C0B0B' stroke-width='3.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") center/12px no-repeat}
+.phone.lt .pt.on::after{background:var(--d-sel) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") center/12px no-repeat}
+
+/* loader: the lineup read back */
+.ld{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0 22px 40px}
+.ld .mk{width:86px;height:40px;animation:bob 1.1s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-7px)}}
+.ld h3{font-size:24px;font-weight:300;text-align:center;margin-top:26px}
+.ld-bar{width:100%;height:3px;background:var(--d-line);margin-top:20px;overflow:hidden}
+.ld-bar i{display:block;height:100%;width:0;background:var(--d-ink);transition:width .25s linear}
+.ld-list{width:100%;margin-top:20px;display:flex;flex-direction:column;gap:12px}
+.ld-list div{display:flex;gap:10px;align-items:center;font-size:14px;line-height:1.35;color:var(--d-mute);transition:color .3s}
+.ld-list div.ok{color:var(--d-ink)}
+.ld-list .ck{flex:none;width:20px;height:20px;border-radius:2px;border:1.5px solid var(--d-line);display:grid;place-items:center}
+.ld-list div.ok .ck{background:var(--d-sel);border-color:var(--d-sel)}
+.ld-list .ck svg{width:12px;height:12px;stroke:var(--d-bg);stroke-width:3.4;fill:none;opacity:0}
+.ld-list div.ok .ck svg{opacity:1}
+.ld-list b{font-weight:600}
+
+/* payoff: your lineup */
+.lu-h{font-size:26px;font-weight:300;line-height:1.2;margin-top:8px}
+.lu{display:flex;flex-direction:column;gap:8px;margin-top:18px}
+.lu>div{display:flex;gap:12px;align-items:center;border:1px solid var(--d-line);background:var(--d-surf);padding:10px;border-radius:2px}
+.th{flex:none;width:54px;height:54px;border-radius:2px;background:var(--d-surf2) center/cover no-repeat;display:grid;place-items:center}
+.th .mk{width:30px;height:14px;opacity:.7}
+.lu b{display:block;font-size:14.5px;font-weight:600}
+.lu small{display:block;font-size:12px;color:var(--d-mute);margin-top:2px}
+.fol{margin-left:auto;flex:none;height:26px;padding:0 10px;border:1px solid var(--d-ink2);border-radius:2px;font:600 10px/24px var(--fp);letter-spacing:.07em;color:var(--d-ink)}
+
+/* paywall: their sheet */
+.sht{flex:1;min-height:0;display:flex;flex-direction:column;background:var(--d-bg);margin-top:6px;border-radius:12px 12px 0 0;box-shadow:0 -1px 0 var(--d-line);position:relative}
+.grab{flex:none;height:22px;display:flex;justify-content:center;align-items:center;position:relative}
+.grab i{width:36px;height:5px;border-radius:3px;background:var(--d-line)}
+.xb{position:absolute;right:12px;top:10px;width:30px;height:30px;border-radius:50%;background:var(--d-surf2);display:grid;place-items:center;color:var(--d-ink);z-index:6}
+.xb svg{width:14px;height:14px}
+.pw-hero{position:relative;margin:4px -18px 0;height:150px;overflow:hidden}
+.pw-hero img{width:100%;height:100%;object-fit:cover;object-position:center 30%}
+.pw-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 35%,var(--d-bg))}
+.pw-hero .fromad{position:absolute;left:18px;top:10px;z-index:2}
+.pw-h{font-size:27px;font-weight:300;line-height:1.18;letter-spacing:-.01em;margin-top:6px}
+.pw-s{font-size:13.5px;color:var(--d-ink2);margin-top:8px;line-height:1.45}
+.pw-chip{display:inline-flex;align-items:center;gap:6px;min-height:28px;padding:5px 10px;border:1px solid var(--d-line);border-radius:2px;font-size:11.5px;font-weight:600;color:var(--d-ink2);margin-top:12px;line-height:1.3}
+.pw-chip b{color:var(--d-ink)}
+.plan{display:block;width:100%;text-align:left;background:var(--d-bg);color:var(--d-ink);border:1px solid var(--d-line);border-radius:2px;padding:16px 16px 14px;margin-top:10px;font-family:var(--fp)}
+.plan.on{border-color:var(--d-sel);box-shadow:inset 0 0 0 1px var(--d-sel)}
+.plan .tgs{display:flex;gap:8px;margin-bottom:10px}
+.plan .tgs span{font:600 10.5px/1 var(--fp);letter-spacing:.05em;padding:5px 7px;border-radius:2px;background:var(--d-chip);color:var(--d-chipt)}
+.plan .tgs span.r{background:var(--d-red);color:#fff}
+.plan h4{font-size:20px;font-weight:600;letter-spacing:-.01em}
+.plan .pr{font-size:14.5px;font-weight:600;margin-top:6px}
+.plan .pr s{color:var(--d-mute);font-weight:500}
+.plan .pm{font-size:12px;color:var(--d-mute);font-weight:600}
+.plan p{font-size:13px;color:var(--d-ink2);margin-top:8px;line-height:1.45}
+.legal{font-size:9.5px;line-height:1.55;color:var(--d-mute);margin-top:14px}
+.legal u{text-underline-offset:2px}
+.proof{display:flex;align-items:center;justify-content:center;gap:7px;font-size:12px;font-weight:600;color:var(--d-ink2);margin-bottom:10px}
+.proof i{font-style:normal;color:#F5B400;letter-spacing:1px;font-size:13px}
+.fcap{font-size:11.5px;color:var(--d-ink2);text-align:center;margin-top:9px}
+.cap-today{margin:18px 0 6px;border:1.5px dashed var(--d-mute);border-radius:12px;padding:12px;text-align:center;font-size:12.5px;color:var(--d-ink2);line-height:1.5;font-family:var(--f)}
+
+/* home, where the X lands */
+.hm-top{flex:none;height:50px;display:flex;align-items:center;justify-content:space-between;padding:0 18px}
+.hm-top .wm{width:150px;height:15px;background:var(--d-ink)}
+.hm-top .pl{color:var(--d-red);font:700 22px/1 var(--f);margin-left:3px}
+.hm-top span{display:flex;gap:18px;color:var(--d-ink)}
+.hm-top svg{width:22px;height:22px}
+.sh-h{font-size:16px;font-weight:600;margin-top:16px;display:flex;justify-content:space-between}
+.sh-h small{font-size:12px;color:var(--d-mute);font-weight:500}
+.sh-row{display:flex;gap:8px;margin-top:10px;overflow:hidden}
+.sh-row div{flex:none;width:120px;aspect-ratio:3/4;border-radius:2px;background:var(--d-surf2) center/cover no-repeat;position:relative;overflow:hidden}
+.sh-row div::after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 50%,rgba(0,0,0,.75))}
+.sh-row div span{position:absolute;left:8px;right:8px;bottom:8px;font-size:11.5px;font-weight:600;color:#fff;z-index:2;line-height:1.25}
+.nt{margin-top:16px;border:1px solid var(--d-line);background:var(--d-surf);padding:16px;text-align:center;border-radius:2px}
+.nt .bell{width:40px;height:40px;margin:0 auto;border-radius:50%;background:var(--d-surf2);display:grid;place-items:center}
+.nt .bell svg{width:20px;height:20px}
+.nt h4{font-size:19px;font-weight:600;line-height:1.25;margin-top:10px}
+.nt p{font-size:12.5px;color:var(--d-ink2);margin-top:6px;line-height:1.45}
+.nt .d-btn{height:44px;margin-top:12px}
+.nt .lat{display:block;width:100%;font:600 11.5px/1 var(--fp);letter-spacing:.07em;color:var(--d-mute);margin-top:12px}
+.acc{margin-top:10px;border:1px solid var(--d-line);padding:14px;border-radius:2px}
+.acc b{display:block;font-size:14px;font-weight:600}
+.acc small{display:block;font-size:12px;color:var(--d-mute);margin-top:3px;line-height:1.4}
+.acc .ab2{display:flex;gap:8px;margin-top:10px}
+.acc .ab2 button{flex:1;height:40px;border:1px solid var(--d-line);border-radius:2px;font:600 12.5px/1 var(--fp);color:var(--d-ink);display:flex;align-items:center;justify-content:center;gap:6px}
+.tabbar{flex:none;height:76px;border-top:1px solid var(--d-line);display:flex;align-items:flex-start;padding-top:12px;justify-content:space-around;color:var(--d-mute)}
+.tabbar div.on{color:var(--d-ink)}
+.tabbar svg{width:23px;height:23px}
+
+.ideas{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:56px}
+@media(max-width:800px){.ideas{grid-template-columns:1fr}}
+.idea{background:var(--cream);border-radius:16px;padding:22px 24px;cursor:pointer;transition:background .15s}
+.idea:hover{background:var(--cream2)}
+.idea:last-child{grid-column:1/-1}
+.idea .n{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-lift);font-weight:600}
+.idea h3{font-size:19px;font-weight:600;letter-spacing:-.02em;margin-top:4px;line-height:1.3;color:var(--ink)}
+.idea p{font-size:14.5px;color:var(--muted);margin-top:6px;line-height:1.55}
+.idea .kept{font-size:13px;color:var(--muted);margin-top:10px;padding-top:10px;border-top:1px solid var(--line)}
+.qr{position:relative;overflow:hidden;display:flex;gap:26px;align-items:center;color:#fff;border-radius:20px;padding:30px 32px;margin-top:40px;flex-wrap:wrap}
+.qr::before{content:"";position:absolute;inset:0;background:url(img/w4.jpg) center 30%/cover;opacity:.28}
+.qr>*{position:relative;z-index:2}
+.qr img.code{width:135px;height:135px;background:#fff;border-radius:12px;padding:0;image-rendering:pixelated}
+.qr h3{font-size:24px;font-weight:600;letter-spacing:-.02em}
+.qr p{font-size:15px;color:rgba(255,255,255,.82);margin-top:4px;max-width:520px}
+.qr .demo{margin-left:auto;background:#fff;color:var(--ink);height:48px;padding:0 24px;font-size:16px}
+@media(max-width:1080px){.qr img.code{display:none}}
+@media(max-width:700px){.qr .demo{margin-left:0}}
+</style>
+</head>
+<body>
+
+<nav class="nav"><div class="nav-in">
+  <span class="logo" role="img" aria-label="Daily Wire"></span>
+  <span class="sep"></span><span class="lbl">Growth audit · by Adapty</span>
+  <div class="tabs"><button data-v="over" class="on">Overview</button><button data-v="pw">Prototype</button></div>
+  <a class="demo" href="https://calendly.com/d/cty4-37z-zqj" target="_blank" rel="noopener">Book a demo</a>
+</div></nav>
+
+<!-- ======================= OVERVIEW ======================= -->
+<div class="view on" id="view-over">
+  <header class="hero hero-frame dw-bg">
+    <div class="hero-photos" aria-hidden="true"><img src="img/w1.jpg" alt=""><img src="img/w2.jpg" alt=""><img src="img/w3.jpg" alt=""><img src="img/w4.jpg" alt=""></div>
+    <div class="ticker" id="ticker" aria-hidden="true"></div>
+    <div class="wrap hero-in">
+      <div>
+        <div class="eyebrow">Growth audit · November 2026 · Prepared by Adapty</div>
+        <h1>Your ads sell a show. <em class="g">The app asks for an account.</em></h1>
+        <p class="lead">Someone watches your Real History trailer, installs, and meets SIGN UP FREE, a Welcome form and Agree &amp; Create Account before anything plays. Then “Breaking Stories. Exclusive Interviews. Bold Commentary.”, then Get full access to DW+, with no word about the show they came for. Here is a first launch that leads with it, in your design, at your prices.</p>
+        <div class="cta-row">
+          <button class="btn-w" data-open="pw">Open the three flows</button>
+          <button class="btn-o" data-walk>▶ Watch the 30-second walkthrough</button>
+        </div>
+        <p class="byline">Built from your live iOS flow, your App Store listing, get.dailywire.com and the Google video ads you run today.</p>
+      </div>
+      <div class="fan" aria-hidden="true">
+        <img src="img/shot-welcome.jpg" style="left:0;top:70px;transform:rotate(-8deg)" alt="">
+        <img src="img/shot-signup.jpg" style="left:29%;top:16px;transform:rotate(-1deg);z-index:2" alt="">
+        <img src="img/shot-paywall.jpg" style="left:58%;top:80px;transform:rotate(7deg)" alt="">
+        <img class="j" src="img/icon.jpg" alt="">
+      </div>
+    </div>
+  </header>
+
+  <div class="stats"><div class="wrap">
+    <div class="stat"><b><i>★</i> 4.5</b><span>from 17K ratings on the US App Store</span></div>
+    <div class="stat"><b>41M</b><span>monthly audience for your show lineup, as get.dailywire.com says</span></div>
+    <div class="stat"><b>1</b><span>account required before a single show plays</span></div>
+    <div class="stat"><b>0</b><span>questions asked before the DW+ paywall</span></div>
+  </div></div>
+
+  <section class="sec"><div class="wrap about">
+    <div>
+      <div class="kick">What this is</div>
+      <h2 class="sec-h">We installed Daily Wire, walked the first launch, then rebuilt <b>the screens between your trailer and DW+</b>.</h2>
+      <p class="sec-p">Adapty powers subscriptions for 30,000+ apps, so we see what moves purchases across the market. Nearly 500 apps build their paywalls and onboarding in Adapty Flow Builder, and millions of dollars in subscription revenue pass through it every month. For Daily Wire we looked at what each ad promises and what the first launch does with that promise.</p>
+      <div class="flowp">
+        <div class="k2">Your first launch today</div>
+        <div><i>1</i><span>The tracking prompt, on first open. <b>Good, kept first.</b></span></div>
+        <div><i>2</i><span>Your three-slide carousel. <b>Kept, and now opens on the slide that matches the ad.</b></span></div>
+        <div><i>3</i><span>SIGN UP FREE → Welcome → Agree &amp; Create Account. <b>Moved after DW+.</b></span></div>
+        <div><i>4</i><span>Breaking Stories notifications, then the DW+ sheet slides over it. <b>Notifications moved after DW+.</b></span></div>
+      </div>
+    </div>
+    <div>
+      <div class="note"><h4><i>1</i>Your design, not ours</h4><p>Your #0C0B0B, the outlined cards with square corners, the white AGREE &amp; CONTINUE, the red MOST POPULAR tag, your carousel photography, the flag mark and your own trailers. Only the order changes, plus one screen built from your own lineup.</p></div>
+      <div class="note"><h4><i>2</i>Your prices, as published</h4><p>Monthly 17,99 €; Annual 119,99 € for the first year, then 179,00 €; Full Access 199,99 € for the first year, then 299,00 €, as your EU paywall shows them. 119,99 € is 33% under 179,00 €, as your tag says. No trial, because you do not sell one. No timer.</p></div>
+      <div class="note"><h4><i>3</i>You may have tested some of this</h4><p>We cannot see your experiment history. Tell us what you already ran and we will go deeper on the rest.</p></div>
+    </div>
+  </div></section>
+
+  <section class="sec" id="ads" style="padding-top:0"><div class="wrap">
+    <div class="kick">Your ads</div>
+    <h2 class="sec-h">Meta carries 76% of what AppMagic sees. <b>Your app ads run on Google.</b></h2>
+    <p class="sec-p">On Meta, Upstream DW runs article ads that end on “Read this story on The Daily Wire”. The app installs come from Google video: a Real History trailer, a Pendragon Cycle trailer and an app walkthrough. Each sells one thing. Every install meets the same SIGN UP FREE.</p>
+    <div class="lib">
+      <div>
+        <div class="vid"><video src="img/ad-rh.mp4" autoplay muted loop playsinline poster="img/ad-rh-1.jpg"></video><span class="tag">GOOGLE · RUNNING NOW</span></div>
+        <div class="strip"><img src="img/ad-rh-1.jpg" alt=""><img src="img/ad-rh-2.jpg" alt=""><img src="img/ad-rh-3.jpg" alt=""><img src="img/ad-rh-4.jpg" alt=""></div>
+      </div>
+      <div class="adb">
+        <div class="hook">“But you were never taught what really happened.”</div>
+        <div class="meta">Google video (AdMob) · since 25 October 2026 · 15 seconds · Real History with Matt Walsh</div>
+        <dl>
+          <dt>In the ad</dt><dd>Archive Watergate footage under captions, Matt Walsh on the title card, ending on “Now streaming on Daily Wire+”.</dd>
+          <dt>The promise</dt><dd>The real story of Watergate, on DW+.</dd>
+          <dt>Today it lands on</dt><dd>The same carousel and SIGN UP FREE as everyone. DW+ never mentions Real History.</dd>
+          <dt>In the rebuild</dt><dd>Matt Walsh arrives ticked, and DW+ opens on Real History.</dd>
+        </dl>
+        <div class="go"><button data-adgo="0">Open its flow</button></div>
+      </div>
+    </div>
+    <div class="lib">
+      <div>
+        <div class="vid"><video src="img/ad-pc.mp4" autoplay muted loop playsinline poster="img/ad-pc-2.jpg"></video><span class="tag">GOOGLE · RUNNING NOW</span></div>
+        <div class="strip"><img src="img/ad-pc-1.jpg" alt=""><img src="img/ad-pc-2.jpg" alt=""><img src="img/ad-pc-3.jpg" alt=""><img src="img/ad-pc-4.jpg" alt=""></div>
+      </div>
+      <div class="adb">
+        <div class="hook">“Download the app today”</div>
+        <div class="meta">Google video (AdMob) · since 14 October 2026 · 15 seconds · The Pendragon Cycle: Rise of the Merlin</div>
+        <dl>
+          <dt>In the ad</dt><dd>Battle scenes from the film playing on a phone, your Movies row, then the DW+ icon and the store badges.</dd>
+          <dt>The promise</dt><dd>The film, in the app.</dd>
+          <dt>Today it lands on</dt><dd>The same first slide, account form and DW+ sheet as everyone. No film on any of them.</dd>
+          <dt>In the rebuild</dt><dd>The carousel opens on “Original Films, Fearless Documentaries”, Movies arrives ticked, and DW+ opens on the film.</dd>
+        </dl>
+        <div class="go"><button data-adgo="1">Open its flow</button></div>
+      </div>
+    </div>
+    <div class="lib">
+      <div>
+        <div class="strip tall"><img src="img/ad-app-1.jpg" alt=""><img src="img/ad-app-2.jpg" alt=""><img src="img/ad-app-3.jpg" alt=""><img src="img/ad-app-4.jpg" alt=""></div>
+      </div>
+      <div class="adb">
+        <div class="hook">“Stay ready with the DailyWire+ app”</div>
+        <div class="meta">Google video (AdMob) · since 13 July 2026 · 34 seconds · your longest-running app ad</div>
+        <dl>
+          <dt>In the ad</dt><dd>A hand scrolls the app: the news feed, Matt Walsh’s show page with FOLLOWING and New Live Episodes, an episode playing.</dd>
+          <dt>The promise</dt><dd>Your shows, followed, in one app.</dd>
+          <dt>Today it lands on</dt><dd>A first launch with no way to follow anyone until after the account and the paywall.</dd>
+          <dt>In the rebuild</dt><dd>One screen of your own lineup follows their shows on day one, with the same FOLLOWING the ad shows.</dd>
+        </dl>
+        <div class="go"><button data-adgo="2">See the lineup screen</button></div>
+      </div>
+    </div>
+    <p class="lib-foot">Adapty can pick the flow at first open from the campaign the install came from, through the attribution you already run. When you add the next trailer, it gets its own first screen the same day, with no app release.</p>
+  </div></section>
+
+  <section class="sec" style="padding-top:0"><div class="wrap">
+    <div class="kick">The five ideas</div>
+    <h2 class="sec-h">Ranked by what we would <b>test first</b>.</h2>
+    <p class="sec-p">Tap any of them to open that screen on all three phones.</p>
+    <div class="list" id="list"></div>
+  </div></section>
+
+  <section class="sec" style="padding-top:0"><div class="wrap">
+    <div class="kick">Potential outcome</div>
+    <h2 class="sec-h">Five ideas, <b>one first launch per trailer</b>.</h2>
+    <div class="outc">
+      <div class="osh dw-bg">
+        <img src="img/ad-rh-4.jpg" alt="">
+        <div class="k">Run together</div>
+        <h3>Every install greeted by the show it came for</h3>
+        <div class="nums"><div><b>+20%</b><span>purchases</span></div><div><b>+15%</b><span>ARPU</span></div></div>
+        <p class="cap">Each trailer’s first launch is its own A/B test against today’s, judged on revenue per install for that campaign.</p>
+      </div>
+      <div class="dos">
+        <div class="do"><div class="k">Do this week</div><h4>Move SIGN UP FREE after DW+</h4><p>One button changes on the carousel. The account form moves to after the purchase and to Home. Built in Flow Builder, live without an app release.</p></div>
+        <div class="do"><div class="k">Then</div><h4>One DW+ template, the show as the variable</h4><p>Real History, The Pendragon Cycle, a host: the hero, the headline and the lineup chip change with the first pick or the campaign.</p></div>
+        <div class="do"><div class="k">And measure</div><h4>Judge each trailer on revenue, not installs</h4><p>Adapty reports purchases and revenue per install for each campaign and each pick, so spend follows the show that pays.</p></div>
+      </div>
+    </div>
+    <div class="endcta"><button class="btn-k" data-open="pw">Open the prototype</button><a class="btn-l" href="https://calendly.com/d/cty4-37z-zqj" target="_blank" rel="noopener">Book a demo</a></div>
+    <p class="foot">Impact ranges are Adapty’s expected effect from teardowns and A/B tests across subscription apps, not measured lift for Daily Wire. Screens, copy, carousel photography and prices come from the Daily Wire iOS app as recorded on 16 November 2026 (EU storefront: 17,99 €, 119,99 € then 179,00 €, 199,99 € then 299,00 €). 4.5 from 17K ratings, the show lineup and the App Store screenshots come from the US App Store listing. The 41 million monthly audience is from get.dailywire.com. The ads, their frames and dates are from AppMagic. “33% off” is your own tag: 119,99 € ÷ 179,00 € and 199,99 € ÷ 299,00 € are both 67%. “or €10/month” and “or €17/month” are your own lines. The FOLLOWING and New Live Episodes controls are as shown in your app walkthrough ad. The Light theme on the phones is our approximation; the app ships dark.</p>
+  </div></section>
+</div>
+
+<!-- ======================= PROTOTYPE ======================= -->
+<div class="view" id="view-pw">
+  <div class="wrap pwv">
+    <div class="kick">Prototype · one first launch per trailer</div>
+    <h1>Three new viewers. <b>Three shows.</b></h1>
+    <p class="sub">One install from your Real History trailer, one from The Pendragon Cycle, one from the App Store. Same screens, same prices. Tap the steps, or tap inside any phone: install, pick your lineup, choose a plan, close it.</p>
+    <div class="tools">
+      <div class="seg" id="theme"><button data-th="dark" class="on">Dark</button><button data-th="light">Light</button></div>
+      <button class="wt" id="wt" data-walk>▶ 30-second walkthrough</button>
+    </div>
+    <div class="steps" id="steps">
+      <button data-st="today" class="td">Today</button><button data-st="arrive">1 · Arrive</button><button data-st="att">2 · Tracking</button><button data-st="welcome">3 · Welcome</button><button data-st="pick">4 · Lineup</button><button data-st="load">5 · Loader</button><button data-st="lineup">6 · Following</button><button data-st="pw" class="on">7 · DW+</button><button data-st="home">8 · Home</button>
+    </div>
+    <p class="stcap" id="stcap"></p>
+    <div class="dcap" id="dcap"><div class="dcap-in"><span id="dtx"></span><div class="pr"><i id="dpr"></i></div></div></div>
+    <div class="trio" id="trio"></div>
+    <div class="ideas" id="ideas"></div>
+    <div class="qr dw-bg">
+      <img class="code" src="img/qr.svg" alt="QR code to this prototype">
+      <div><h3>Try it on your phone</h3><p>Scan to open the three flows in your hand. Every screen is buildable in Adapty Flow Builder and testable against today’s.</p></div>
+      <a class="demo" href="https://calendly.com/d/cty4-37z-zqj" target="_blank" rel="noopener">Book a demo</a>
+    </div>
+  </div>
+</div>
+
+<script>
+var $=function(s,r){ return (r||document).querySelector(s); }, $$=function(s,r){ return [].slice.call((r||document).querySelectorAll(s)); };
+function SV(d,w){ return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="'+(w||2)+'" stroke-linecap="round" stroke-linejoin="round">'+d+'</svg>'; }
+var CHK='<svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+var G={ theme:'dark', step:'pw' };
+
+/* the lineup, from the App Store listing, in its order */
+var SH={
+ ben:{n:'Ben Shapiro',s:'The Ben Shapiro Show',f:'the latest Ben Shapiro Show',img:'w1'},
+ jbp:{n:'Jordan B. Peterson',s:'The Jordan B. Peterson Podcast',f:'Exodus and The Gospels',img:''},
+ walsh:{n:'Matt Walsh',s:'The Matt Walsh Show · Real History',f:'Real History',img:'ad-rh-4'},
+ knowles:{n:'Michael Knowles',s:'The Michael Knowles Show',f:'The Michael Knowles Show',img:''},
+ klavan:{n:'Andrew Klavan',s:'The Andrew Klavan Show',f:'The Andrew Klavan Show',img:''},
+ morning:{n:'Morning Wire',s:'Daily news',f:'today’s Morning Wire',img:''},
+ movies:{n:'Movies',s:'The Pendragon Cycle · Am I Racist',f:'The Pendragon Cycle',img:'hero-pc'},
+ prageru:{n:'PragerU',s:'5-Minute Videos',f:'5-Minute Videos',img:''}
+};
+var SORD=['ben','jbp','walsh','knowles','klavan','morning','movies','prageru'];
+/* the DW+ headline, by the first pick */
+var HEAD={
+ walsh:'Watch all of Real History on DW+',
+ movies:'Watch The Pendragon Cycle on DW+',
+ ben:'The Ben Shapiro Show, and everything else on DW+',
+ jbp:'Jordan B. Peterson’s exclusive series, on DW+',
+ knowles:'The Michael Knowles Show, and everything else on DW+',
+ klavan:'The Andrew Klavan Show, and everything else on DW+',
+ morning:'Get full access to DW+',
+ prageru:'PragerU, and everything else on DW+'
+};
+var HERO={ walsh:'ad-rh-4', movies:'hero-pc', ben:'w1', jbp:'w3', knowles:'w2', klavan:'w2', morning:'w3', prageru:'w2' };
+var SLIDES=[
+ {img:'w1',e:'Biggest Names in Conservative Media',h:'Stories That Matter<br>From Voices You Trust'},
+ {img:'w2',e:'Entertainment That Speaks to You',h:'Original Films, Fearless<br>Documentaries'},
+ {img:'w4',e:'Bold Investigative Journalism',h:'Reporting Stories The<br>Mainstream Media Won’t'}
+];
+var PLANS={
+ m:{n:'Monthly',p:'17,99 €/month.',d:'All articles, plus the full DW+ library of films, shows, and documentaries.',r:'Renews at 17,99 €/month',cta:'17,99 €/month'},
+ a:{n:'Annual',t:1,p:'First year for <s>179,00 €</s> 119,99 €',pm:'or €10/month',d:'All articles, plus the full DW+ library of films, shows, and documentaries.',r:'After first year, renews at 179,00 €/year'},
+ f:{n:'Full Access',p:'First year for <s>299,00 €</s> 199,99 €',pm:'or €17/month',d:'Everything from Insider Annual, plus: Private Q&amp;A sessions with our DW+ hosts.',r:'After first year, renews at 299,00 €/year'}
+};
+
+/* the three phones */
+var PH=[
+ { id:'rh', src:'ad', vid:'ad-rh', poster:'ad-rh-1', ring:'#D63534', picks:['walsh'], slide:2, pill:'Real History trailer', mt:'Google ad', lab:['From your Real History trailer','Matt Walsh arrives ticked and the carousel opens on journalism. DW+ opens on Real History.'] },
+ { id:'pc', src:'ad', vid:'ad-pc', poster:'ad-pc-2', ring:'#0C0B0B', picks:['movies'], slide:1, pill:'The Pendragon Cycle trailer', mt:'Google ad', lab:['From your Pendragon Cycle trailer','Movies arrive ticked and the carousel opens on Original Films. DW+ opens on the film.'] },
+ { id:'as', src:'store', ring:'#9A9A9A', picks:['ben','jbp'], slide:0, pill:'', mt:'App Store', lab:['From the App Store','Ticks Ben Shapiro and Jordan Peterson. DW+ leads with the first, and both are followed.'] }
+];
+
+var IDEAS=[
+ { t:'Let them in before you ask for an account', p:'Today SIGN UP FREE is the only way past the carousel, and Welcome → Agree &amp; Create Account sits between your trailer and DW+. Continue with Google alone is four screens. Here the first button reads GET STARTED, and the account comes after the purchase or later from Home.', o:'CR +5–10%', u:'· ARPU +10–17%', st:'welcome', hl:'start', kept:'Kept: your carousel, its photography and three lines, LOG IN for members.' },
+ { t:'Name the show they came for in the DW+ headline', p:'Today every install reads “Get full access to DW+”. Here the Real History install reads “Watch all of Real History on DW+” over a still from the trailer, the film install “Watch The Pendragon Cycle on DW+”, and an App Store install the first show they picked.', o:'CR +15–20%', u:'to purchase', st:'pw', hl:'head', kept:'Kept: your light headline type, “Cancel anytime.” and your plan copy, word for word.' },
+ { t:'Ask whose shows they want, then read it back', p:'Today the first launch asks nothing. Here one screen of your own lineup lets them tick shows; each one becomes a follow, the same FOLLOWING your app walkthrough ad shows, and the loader names each pick while it works.', o:'CR +10–15%', u:'to purchase', st:'load', hl:'ld', kept:'Kept: your outlined cards, square corners, white CONTINUE and the flag mark.' },
+ { t:'Ask for notifications after DW+, not right before it', p:'Today “Breaking Stories. Exclusive Interviews. Bold Commentary.” appears and the DW+ sheet slides over it before anyone answers. Here it waits on Home, after DW+, and names the shows they follow.', o:'CR +10–15%', u:'to purchase', st:'home', hl:'notif', kept:'Kept: your notification copy, TURN ON NOTIFICATIONS and MAYBE LATER.' },
+ { t:'Put 4.5 stars from 17K ratings next to the button', p:'Today the DW+ sheet carries prices and legal text, and no proof. News is a trust-led purchase, and your App Store rating is the strongest proof you publish. Here it sits right above AGREE &amp; CONTINUE.', o:'CR +10–15%', u:'to purchase', st:'pw', hl:'proof', kept:'Kept: your three plans, your prices, MOST POPULAR and 33% OFF, untouched.' }
+];
+
+var TCAP={
+ today:'<b>Today:</b> this sheet is the same for every install, reached after SIGN UP FREE, the account form and the notifications screen. There is no close button.',
+ arrive:'<b>Step 1.</b> Two installs from your Google trailers, one from the App Store. Tap Install or Get.',
+ att:'<b>Step 2.</b> Your tracking prompt stays first, so every install can be tied to the campaign that bought it.',
+ welcome:'<b>Step 3. Proposed:</b> your carousel opens on the slide that matches the trailer, and GET STARTED replaces SIGN UP FREE.',
+ pick:'<b>Step 4. Proposed:</b> one screen of your own lineup. The trailer installs arrive with their show ticked; change the picks and watch DW+ follow.',
+ load:'<b>Step 5. Proposed:</b> the wait names each show it is following.',
+ lineup:'<b>Step 6. Proposed:</b> their lineup, followed, with your FOLLOWING tag.',
+ pw:'<b>Step 7. Proposed:</b> DW+ opens on the show they came for, with your rating by the button. Scroll a phone, pick a plan, tap ✕: it closes straight into the app.',
+ home:'<b>Step 8.</b> Home, with the notifications screen and the account moved here, after DW+.'
+};
+
+var COL=PH.map(function(){ return {}; });
+function initCol(i){ var c=COL[i]; c.picks=PH[i].picks.slice(); c.plan='a'; c.ld=0; c.sl=PH[i].slide; return c; }
+PH.forEach(function(p,i){ initCol(i); });
+
+function sb(wh){ return '<div class="sb'+(wh?' wh':'')+'"><span>9:41</span><i class="isl"></i><span class="ic"><svg width="17" height="11" viewBox="0 0 17 11" fill="currentColor"><rect x="0" y="7" width="3" height="4" rx="1"/><rect x="4.5" y="5" width="3" height="6" rx="1"/><rect x="9" y="2.5" width="3" height="8.5" rx="1"/><rect x="13.5" y="0" width="3" height="11" rx="1"/></svg><svg width="25" height="12" viewBox="0 0 25 12" fill="none"><rect x=".5" y=".5" width="21" height="11" rx="3.5" stroke="currentColor" opacity=".4"/><rect x="2" y="2" width="18" height="8" rx="2" fill="currentColor"/></svg></span></div>'; }
+function lead(i){ var c=COL[i]; return c.picks[0]||'morning'; }
+function picksTxt(i){ var c=COL[i]; return (c.picks.length?c.picks:['morning']).map(function(k){ return SH[k].n; }).join(' · '); }
+function th(k){ var s=SH[k]; return s.img?'<i class="th" style="background-image:url(img/'+s.img+'.jpg)"></i>':'<i class="th"><i class="mk"></i></i>'; }
+var BACK='<button class="bk" data-act="back">'+SV('<path d="M19 12H5M12 19l-7-7 7-7"/>')+'</button>';
+
+function scrAd(i){
+  var p=PH[i];
+  return '<div class="gad"><div class="gtop"><span><b>Ad</b>Daily Wire</span><span class="gx">✕</span></div><div class="gv"><video src="img/'+p.vid+'.mp4" autoplay muted loop playsinline poster="img/'+p.poster+'.jpg"></video></div>'+
+   '<div class="gcard"><img src="img/icon.jpg" alt=""><div><b>Daily Wire</b><small>4.5 ★ · Free · App Store</small></div><button class="gin" data-act="install">Install</button></div></div>'+sb(1);
+}
+function scrStore(i){
+  return '<div class="ast">'+sb()+'<div class="ab"><div class="ah"><img src="img/icon.jpg" alt=""><div><b>Daily Wire</b><small>Noisy. Opinionated. Right.</small><button class="get" data-act="install">Get</button></div></div>'+
+   '<div class="ar"><div><small>17K ratings</small><b>4.5</b><i>★★★★★</i></div><div><small>Age</small><b>13+</b><i>Years</i></div><div><small>Chart</small><b>#26</b><i>News</i></div></div>'+
+   '<div class="ash"><img src="img/st-1.jpg" alt=""><img src="img/st-2.jpg" alt=""><img src="img/st-3.jpg" alt=""></div></div></div>';
+}
+function scrAtt(i){
+  return sb(1)+'<div class="spl"><i class="wm"></i></div>'+
+   '<div class="sys"><div class="sys-in"><div class="ai">✋</div><h5>Allow “Daily Wire” to track your activity across other companies’ apps and websites?</h5><p>Enabling this connects your device to your account for a personalized experience.</p><button data-act="attno">Ask App Not to Track</button><button data-act="attok">Allow</button></div></div>';
+}
+function scrWelcome(i){
+  var c=COL[i], ad=PH[i].src==='ad';
+  return sb(1).replace('class="sb wh"','class="sb wh ov"')+'<div class="car" data-car>'+SLIDES.map(function(s,k){
+     return '<div class="sl"><img src="img/'+s.img+'.jpg" alt="">'+(ad&&k===c.sl?'<span class="fromad">▶ From your Google trailer</span>':'')+'<i class="wm"></i><div class="ey">'+s.e+'</div><h2>'+s.h+'</h2></div>'; }).join('')+'</div>'+
+   '<div class="wdots">'+SLIDES.map(function(s,k){ return '<i'+(k===c.sl?' class="on"':'')+'></i>'; }).join('')+'</div>'+
+   '<div class="scr-foot" style="padding-top:10px"><button class="d-btn" data-act="start" data-hl="start">Get started</button><button class="d-ghost" data-act="login">Log in</button></div>';
+}
+function scrPick(i){
+  var c=COL[i], ad=PH[i].src==='ad';
+  return sb()+'<div class="scr-top">'+BACK+'<span class="ttl">Get Started</span></div>'+
+   '<div class="scr-body">'+(ad?'<span class="fromad" style="margin-top:2px">▶ '+SH[PH[i].picks[0]].n+' ticked from your trailer</span>':'')+
+   '<h2 class="pk-h">Who do you want to hear from?</h2><p class="pk-s">Pick as many as you like. We’ll follow them for you, and you can change it any time.</p>'+
+   '<div class="pg" data-hl="pick">'+SORD.map(function(k){ return '<button class="pt'+(c.picks.indexOf(k)>-1?' on':'')+'" data-act="g" data-g="'+k+'"><b>'+SH[k].n+'</b><small>'+SH[k].s+'</small></button>'; }).join('')+'</div></div>'+
+   '<div class="scr-foot"><button class="d-btn" data-act="done"'+(c.picks.length?'':' disabled')+'>Continue</button></div>';
+}
+function loadLines(i){
+  var c=COL[i], ps=(c.picks.length?c.picks:['morning']), out=[];
+  ps.slice(0,2).forEach(function(k){ out.push('Following <b>'+(k==='movies'?'Movies':SH[k].s.split(' · ')[0])+'</b>'); });
+  out.push('Lining up <b>'+SH[ps[0]].f+'</b>');
+  out.push('Putting your lineup first on Home');
+  return out;
+}
+function scrLoad(i){
+  var c=COL[i], ln=loadLines(i), n=c.ld||0;
+  return sb()+'<div class="scr-body col" style="padding-bottom:0"><div class="ld" data-hl="ld"><i class="mk"></i><h3>Building your lineup</h3>'+
+   '<div class="ld-bar"><i style="width:'+Math.round(100*n/ln.length)+'%"></i></div><div class="ld-list">'+ln.map(function(t,k){ return '<div'+(k<n?' class="ok"':'')+'><span class="ck">'+CHK+'</span><span>'+t+'</span></div>'; }).join('')+'</div></div></div>';
+}
+function scrLineup(i){
+  var c=COL[i], ps=(c.picks.length?c.picks:['morning']);
+  return sb()+'<div class="scr-top">'+BACK+'<span class="ttl">Your Lineup</span></div><div class="scr-body">'+
+   '<h2 class="lu-h">Your lineup is ready</h2><p class="pk-s">We followed these for you. New episodes land first on Home.</p>'+
+   '<div class="lu" data-hl="lu">'+ps.map(function(k){ return '<div>'+th(k)+'<span><b>'+SH[k].n+'</b><small>'+SH[k].s+'</small></span><span class="fol">Following</span></div>'; }).join('')+'</div>'+
+   '<p class="pk-s" style="margin-top:14px">Change it any time from each show page.</p></div>'+
+   '<div class="scr-foot"><button class="d-btn" data-act="lunext">Continue</button></div>';
+}
+function planHTML(c,k,today){
+  var p=PLANS[k], on=c.plan===k;
+  var tg=k==='a'?'<div class="tgs"><span class="r">MOST POPULAR</span><span>33% OFF</span></div>':k==='f'?'<div class="tgs"><span>33% OFF</span></div>':'';
+  return '<button class="plan'+(on?' on':'')+'" data-act="plan" data-p="'+k+'">'+tg+'<h4>'+p.n+'</h4><div class="pr">'+p.p+'</div>'+(p.pm?'<div class="pm">'+p.pm+'</div>':'')+'<p>'+p.d+'</p></button>';
+}
+var LEGAL='By clicking Agree &amp; Continue, you authorize The Daily Wire to charge your card today with the amount shown plus tax, and again to automatically renew annually at €179/year or the full, then-current rate plus tax. You can <u>cancel</u> any time before the next renewal. Fees for unused time are non-refundable.<br><br>By clicking Agree &amp; Continue, you acknowledge that you have read and agree to Daily Wire’s <u>Terms</u> and <u>Privacy Policy</u>.';
+function scrPW(i){
+  var c=COL[i], k=lead(i), ad=PH[i].src==='ad';
+  return sb()+'<div class="sht"><div class="grab"><i></i><button class="xb" data-act="x" aria-label="Close">'+SV('<path d="M18 6 6 18M6 6l12 12"/>',2.6)+'</button></div>'+
+   '<div class="scr-body">'+
+   '<div class="pw-hero"><img src="img/'+HERO[k]+'.jpg" alt="" style="object-position:center '+(HERO[k]==='ad-rh-4'?'0%':'30%')+'"></div>'+
+   '<h2 class="pw-h" data-hl="head">'+HEAD[k]+'</h2><p class="pw-s">Cancel anytime.</p>'+
+   '<div class="pw-chip">Your lineup: <b>'+picksTxt(i)+'</b></div>'+
+   '<div data-hl="plans">'+planHTML(c,'m')+planHTML(c,'a')+planHTML(c,'f')+'</div>'+
+   '<div class="legal">'+LEGAL+'</div></div>'+
+   '<div class="scr-foot sep"><div class="proof" data-hl="proof"><i>★★★★★</i>4.5 · 17K ratings on the App Store</div><button class="d-btn" data-act="buy">Agree &amp; Continue</button><p class="fcap">'+PLANS[c.plan].r+'</p></div></div>';
+}
+function scrToday(i){
+  var c=COL[i];
+  return sb()+'<div class="sht"><div class="grab"><i></i></div><div class="scr-body">'+
+   '<h2 class="pw-h" style="margin-top:14px">Get full access to DW+</h2><p class="pw-s">Cancel anytime.</p>'+
+   planHTML(c,'m')+planHTML(c,'a')+planHTML(c,'f')+'<div class="legal">'+LEGAL+'</div>'+
+   '<div class="cap-today">Reached after SIGN UP FREE, the account form and the notifications screen. The same sheet for every install. No close button: swipe down to dismiss.</div></div>'+
+   '<div class="scr-foot sep"><button class="d-btn" data-act="tbuy">Agree &amp; Continue</button><p class="fcap">'+PLANS[c.plan].r+'</p></div></div>';
+}
+function scrHome(i){
+  var c=COL[i], ps=(c.picks.length?c.picks:['morning']), row=ps.concat(['movies','walsh','ben']).filter(function(k,j,a){ return a.indexOf(k)===j; }).slice(0,3);
+  return sb()+'<div class="hm-top"><span style="display:flex;align-items:center;gap:0"><i class="wm"></i><b class="pl">+</b></span><span>'+SV('<circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/>')+'</span></div>'+
+   '<div class="scr-body"><div class="sh-h">Your lineup <small>Following '+ps.length+'</small></div><div class="sh-row">'+row.map(function(k){ var s=SH[k]; return '<div style="'+(s.img?'background-image:url(img/'+s.img+'.jpg)':'')+'"><span>'+s.s.split(' · ')[0]+'</span></div>'; }).join('')+'</div>'+
+   '<div class="nt" data-hl="notif"><div class="bell">'+SV('<path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9M13.7 21a2 2 0 0 1-3.4 0"/>')+'</div><h4>Breaking Stories. Exclusive Interviews. Bold Commentary.</h4><p>Be the first to the facts with real-time updates, never miss what matters to you. New from '+SH[ps[0]].n+' included.</p><button class="d-btn" data-act="notif">Turn on notifications</button><button class="lat" data-act="later">MAYBE LATER</button></div>'+
+   '<div class="acc" data-hl="acc"><b>Save your lineup to a free account</b><small>Keep your follows on every device. Takes a few seconds.</small><div class="ab2"><button data-act="acct">Apple</button><button data-act="acct">Google</button></div></div></div>'+
+   '<div class="tabbar"><div class="on">'+SV('<path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/>')+'</div><div>'+SV('<rect x="3" y="5" width="18" height="13" rx="2"/><path d="M10 9l5 2.5-5 2.5z"/>')+'</div><div>'+SV('<path d="M12 3a3 3 0 0 0-3 3v6a3 3 0 0 0 6 0V6a3 3 0 0 0-3-3zM19 11a7 7 0 0 1-14 0M12 18v3"/>')+'</div><div>'+SV('<path d="M4 5h16M4 10h16M4 15h10"/>')+'</div><div>'+SV('<circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/>')+'</div></div>';
+}
+
+function stepScr(st,i){ if(st==='arrive') return PH[i].src==='ad'?'ad':'store'; return st; }
+function phoneHTML(i){
+  var c=COL[i], s=c.scr, inner;
+  if(s==='ad') inner=scrAd(i); else if(s==='store') inner=scrStore(i); else if(s==='att') inner=scrAtt(i);
+  else if(s==='welcome') inner=scrWelcome(i); else if(s==='pick') inner=scrPick(i); else if(s==='load') inner=scrLoad(i);
+  else if(s==='lineup') inner=scrLineup(i); else if(s==='today') inner=scrToday(i); else if(s==='home') inner=scrHome(i); else inner=scrPW(i);
+  return '<div class="phone'+(G.theme==='light'?' lt':'')+'"><section class="scr" data-s="'+s+'">'+inner+'<div class="toast"></div></section></div>';
+}
+function drawCol(i,keep){
+  var box=$('#trio .tcol[data-i="'+i+'"] .pbox'); if(!box) return;
+  var ph=box.querySelector('.phone'), b=box.querySelector('.scr-body'), y=b?b.scrollTop:0;
+  var tmp=document.createElement('div'); tmp.innerHTML=phoneHTML(i);
+  if(ph) box.replaceChild(tmp.firstChild,ph); else box.insertBefore(tmp.firstChild,box.firstChild);
+  if(keep){ var nb=box.querySelector('.scr-body'); if(nb) nb.scrollTop=y; }
+  var car=box.querySelector('[data-car]');
+  if(car){ car.scrollLeft=COL[i].sl*car.clientWidth; car.addEventListener('scroll',function(){ var k=Math.round(car.scrollLeft/car.clientWidth); COL[i].sl=k; $$('.wdots i',box).forEach(function(d,j){ d.classList.toggle('on',j===k); }); },{passive:true}); }
+  if(COL[i].scr==='load') runLoad(i);
+}
+function go(i,s){ var c=COL[i]; clearTimeout(c.lt); c.scr=s; if(s==='load') c.ld=0; drawCol(i); }
+function runLoad(i){
+  var c=COL[i], n=loadLines(i).length, k=walk.on?0.5:1;
+  clearTimeout(c.lt);
+  c.lt=setTimeout(function step(){
+    if(c.scr!=='load') return;
+    if(c.ld<n){ c.ld++; var box=$('#trio .tcol[data-i="'+i+'"]'); $$('.ld-list div',box).forEach(function(d,j){ d.classList.toggle('ok',j<c.ld); }); var bar=$('.ld-bar i',box); if(bar) bar.style.width=Math.round(100*c.ld/n)+'%'; c.lt=setTimeout(step,620*k); }
+    else { c.lt=setTimeout(function(){ if(c.scr==='load') go(i,'lineup'); },500*k); }
+  },420*k);
+}
+function pillText(i){ var p=PH[i]; return p.src==='ad'?p.pill:'Picks '+picksTxt(i); }
+function renderTrio(){
+  $('#trio').innerHTML=PH.map(function(p,i){
+    return '<div class="tcol" data-i="'+i+'" style="--ring:'+p.ring+'"><div class="apill"><span class="mt'+(p.src==='ad'?' ad':'')+'">'+p.mt+'</span><span class="tx">'+pillText(i)+'</span></div><div class="pbox"><i class="finger"></i></div><div class="tlab"><b>'+p.lab[0]+'</b><span>'+p.lab[1]+'</span></div></div>';
+  }).join('');
+  PH.forEach(function(p,i){ drawCol(i); });
+}
+function paintSteps(){ $$('#steps button').forEach(function(b){ b.classList.toggle('on',b.dataset.st===G.step); }); $('#stcap').innerHTML=TCAP[G.step]||''; $$('#trio .tcol').forEach(function(t){ t.classList.toggle('ring',G.step!=='today'); }); }
+function setStep(st){ G.step=st; PH.forEach(function(p,i){ initCol(i); COL[i].scr=stepScr(st,i); }); paintSteps(); PH.forEach(function(p,i){ clearTimeout(COL[i].lt); drawCol(i); }); }
+function toast(i,m){ var e=$('#trio .tcol[data-i="'+i+'"] .toast'); if(!e) return; e.textContent=m; e.classList.add('show'); clearTimeout(e._t); e._t=setTimeout(function(){ e.classList.remove('show'); },2000); }
+var PREV={ att:null, welcome:'att', pick:'welcome', load:'pick', lineup:'pick', pw:'lineup' };
+
+/* taps inside a phone change only that phone */
+document.addEventListener('click',function(e){
+  var t=e.target.closest('[data-act]'); if(!t) return; var col=t.closest('.tcol'); if(!col) return;
+  var i=+col.dataset.i, c=COL[i], a=t.dataset.act;
+  if(a==='install') go(i,'att');
+  else if(a==='attok'||a==='attno') go(i,'welcome');
+  else if(a==='start') go(i,'pick');
+  else if(a==='login') toast(i,'Members log in here, as today');
+  else if(a==='back'){ if(PREV[c.scr]) go(i,PREV[c.scr]); }
+  else if(a==='g'){ var k=t.dataset.g, j=c.picks.indexOf(k); if(j>-1) c.picks.splice(j,1); else c.picks.push(k); drawCol(i,true); $('.apill .tx',col).textContent=pillText(i); }
+  else if(a==='done'){ if(c.picks.length) go(i,'load'); }
+  else if(a==='lunext') go(i,'pw');
+  else if(a==='plan'){ c.plan=t.dataset.p; drawCol(i,true); }
+  else if(a==='buy') toast(i,'Apple’s purchase sheet opens here. The account comes after.');
+  else if(a==='tbuy') toast(i,'Apple’s purchase sheet opens here');
+  else if(a==='x'){ go(i,'home'); toast(i,'Closed straight into the app. No second paywall.'); }
+  else if(a==='notif') toast(i,'The iOS notification prompt opens here');
+  else if(a==='later') toast(i,'Asked again from a show page');
+  else if(a==='acct') toast(i,'Your sign-up, as today, now after DW+');
+});
+
+function fit(){ var w=document.documentElement.clientWidth||innerWidth; if(w<300) w=Math.max(w,(screen&&screen.width)||390,320); var sc=w>=1240?0.8:w>=900?(w-160)/(3*390):(w-48)/390; sc=Math.min(0.8,Math.max(0.42,sc)); $('#trio').style.setProperty('--sc',sc.toFixed(3)); }
+
+/* ---- idea cards and list ---- */
+function ideaRow(d){ return '<div class="row"><span class="out">'+d.o+' <small>'+d.u+'</small></span><span class="see">See it on the phones →</span></div>'; }
+$('#ideas').innerHTML=IDEAS.map(function(d,i){ return '<div class="idea" data-idea="'+i+'"><div class="n">Idea '+(i+1)+' of 5</div><h3>'+d.t+'</h3><p>'+d.p+'</p>'+ideaRow(d)+'<div class="kept">'+d.kept+'</div></div>'; }).join('');
+$('#list').innerHTML=IDEAS.map(function(d,i){ return '<div class="it" data-idea="'+i+'"><div class="em">0'+(i+1)+'</div><div><h3>'+d.t+'</h3><p>'+d.p+'</p>'+ideaRow(d)+'</div></div>'; }).join('');
+function showIdea(n){
+  var d=IDEAS[n]; stopWalk(); showView('pw'); setStep(d.st);
+  setTimeout(function(){
+    $('#trio').scrollIntoView({behavior:'smooth',block:'start'});
+    $$('#trio [data-hl="'+d.hl+'"]').forEach(function(el){
+      var b=el.closest('.scr-body'); if(b) b.scrollTop=Math.max(0,el.offsetTop-120);
+      el.classList.remove('pulse'); void el.offsetWidth; el.classList.add('pulse');
+    });
+  },80);
+}
+document.addEventListener('click',function(e){ var c=e.target.closest('[data-idea]'); if(c) showIdea(+c.dataset.idea); });
+document.addEventListener('click',function(e){ var b=e.target.closest('[data-adgo]'); if(!b) return; stopWalk(); showView('pw'); var n=+b.dataset.adgo; setStep(n===2?'pick':'arrive');
+  setTimeout(function(){ var col=$('#trio .tcol[data-i="'+n+'"]'); col.scrollIntoView({behavior:'smooth',block:'center',inline:'center'}); col.querySelector('.phone').classList.add('pulse'); },80); });
+
+/* ---- views ---- */
+function showView(v){ $$('.view').forEach(function(x){ x.classList.remove('on'); }); $('#view-'+v).classList.add('on'); $$('.tabs button').forEach(function(b){ b.classList.toggle('on',b.dataset.v===v); });
+  if(v!=='pw') stopWalk();
+  var q=new URLSearchParams(location.search); q.delete('open'); if(v==='pw') q.set('view','proto'); else q.delete('view'); history.replaceState(null,'',location.pathname+(q.toString()?'?'+q:'')); scrollTo(0,0); fit();
+  if(v==='pw') PH.forEach(function(p,i){ var car=$('#trio .tcol[data-i="'+i+'"] [data-car]'); if(car) car.scrollLeft=COL[i].sl*car.clientWidth; }); }
+$$('.tabs button').forEach(function(b){ b.addEventListener('click',function(){ showView(b.dataset.v); }); });
+$$('[data-open]').forEach(function(b){ b.addEventListener('click',function(){ showView(b.dataset.open); }); });
+$$('#steps button').forEach(function(b){ b.addEventListener('click',function(){ stopWalk(); setStep(b.dataset.st); }); });
+$$('#theme button').forEach(function(b){ b.addEventListener('click',function(){ G.theme=b.dataset.th; $$('#theme button').forEach(function(x){ x.classList.toggle('on',x===b); }); $$('#trio .phone').forEach(function(p){ p.classList.toggle('lt',G.theme==='light'); }); }); });
+
+/* ---- the 30-second walkthrough: drives the real phones ---- */
+var walk={on:false,tok:0};
+function wait(ms,tk){ return new Promise(function(res,rej){ setTimeout(function(){ tk===walk.tok?res():rej('stop'); },ms); }); }
+function cap(t,p){ $('#dtx').textContent=t; $('#dpr').style.width=p+'%'; }
+async function tap(i,sel,tk){
+  var col=$('#trio .tcol[data-i="'+i+'"]'), box=$('.pbox',col), el=$(sel,box), f=$('.finger',box); if(!el) return;
+  var b=box.getBoundingClientRect(), r=el.getBoundingClientRect();
+  f.classList.add('on'); f.style.left=(r.left-b.left+r.width/2)+'px'; f.style.top=(r.top-b.top+r.height/2)+'px';
+  await wait(380,tk); f.classList.add('press'); await wait(120,tk); f.classList.remove('press'); el.click(); await wait(160,tk);
+}
+function all(s){ PH.forEach(function(p,i){ if(i!==1) go(i,s); }); }
+async function scrollTo2(i,sel,tk){ var box=$('#trio .tcol[data-i="'+i+'"] .pbox'), b=$('.scr-body',box), el=$(sel,box); if(!b||!el) return; var to=Math.max(0,el.offsetTop-60), fr=b.scrollTop, t0=performance.now(); while(true){ var k=Math.min(1,(performance.now()-t0)/600); b.scrollTop=fr+(to-fr)*(1-Math.pow(1-k,3)); if(k>=1) break; await wait(16,tk); } }
+async function startWalk(){
+  stopWalk(); var tk=++walk.tok; walk.on=true; showView('pw'); $('#dcap').classList.add('on'); $('#wt').classList.add('on'); $('#wt').textContent='■ Stop walkthrough';
+  var t0=performance.now();
+  try{
+    setStep('arrive'); $('#trio').scrollIntoView({behavior:'smooth',block:'center'});
+    cap('Two installs from your Google trailers, one from the App Store.',6); await wait(1700,tk);
+    await tap(1,'[data-act=install]',tk); all('att');
+    cap('Your tracking prompt stays first.',14); await wait(700,tk);
+    await tap(1,'[data-act=attok]',tk); all('welcome');
+    cap('The carousel opens on the slide that matches the trailer. GET STARTED, no account yet.',26); await wait(1500,tk);
+    await tap(1,'[data-act=start]',tk); all('pick');
+    cap('One screen of your own lineup. The trailer’s show arrives ticked.',38); await wait(700,tk);
+    await tap(1,'[data-g=jbp]',tk); await wait(350,tk); await tap(1,'[data-g=jbp]',tk); await wait(250,tk);
+    await tap(1,'[data-act=done]',tk); all('load');
+    cap('The loader names each show it is following.',50); await wait(2700,tk);
+    PH.forEach(function(p,i){ if(COL[i].scr!=='lineup') go(i,'lineup'); });
+    cap('Their lineup, followed, with your FOLLOWING tag.',60); await wait(1100,tk);
+    await tap(1,'[data-act=lunext]',tk); all('pw');
+    cap('DW+ opens on the show they came for, with your rating by the button.',72); await wait(2000,tk);
+    await Promise.all(PH.map(function(p,i){ return scrollTo2(i,'[data-hl=plans]',tk); }));
+    cap('Your three plans and prices, Annual picked, as today.',84); await wait(600,tk);
+    await tap(1,'[data-p=f]',tk); await wait(450,tk); await tap(1,'[data-p=a]',tk); await wait(900,tk);
+    cap('✕ goes straight into the app. Notifications and the account wait on Home.',95); await tap(1,'[data-act=x]',tk); PH.forEach(function(p,i){ if(i!==1) go(i,'home'); }); await wait(2000,tk);
+    cap('That’s the flow. Tap any phone to try it yourself.',100); console.log('walkthrough ms',Math.round(performance.now()-t0)); window.__walkms=Math.round(performance.now()-t0);
+    await wait(1500,tk); stopWalk(); setStep('pw');
+  }catch(e){}
+}
+function stopWalk(){ if(!walk.on) return; walk.on=false; walk.tok++; $('#dcap').classList.remove('on'); $('#wt').classList.remove('on'); $('#wt').textContent='▶ 30-second walkthrough'; $$('.finger').forEach(function(f){ f.classList.remove('on'); }); }
+$$('[data-walk]').forEach(function(b){ b.addEventListener('click',function(){ if(walk.on&&b.id==='wt'){ stopWalk(); return; } startWalk(); }); });
+document.addEventListener('pointerdown',function(e){ if(!walk.on||!e.isTrusted) return; if(e.target.closest('#wt')) return; if(e.target.closest('#trio,#steps,#theme,.tabs,.nav')) stopWalk(); },true);
+
+/* hero: a news crawl of their own lines, the way a breaking-news ticker runs */
+(function(){ var cm=['Stories That Matter','The Ben Shapiro Show','Original Films','Real History','Morning Wire','Fearless Documentaries','The Matt Walsh Show','The Pendragon Cycle','Bold Commentary','Exclusive Interviews','Breaking Stories','PragerU'], h='';
+  cm.forEach(function(t,k){ h+='<span style="top:'+(5+k*7.8)+'%;animation-duration:'+(16+(k*7)%11)+'s;animation-delay:-'+((k*3.7)%16).toFixed(1)+'s;font-size:'+(18+(k*5)%14)+'px">'+t+'</span>'; }); $('#ticker').innerHTML=h; })();
+
+PH.forEach(function(p,i){ COL[i].scr=stepScr(G.step,i); });
+renderTrio(); fit(); paintSteps(); addEventListener('resize',fit); addEventListener('load',fit); addEventListener('pageshow',fit); if(window.ResizeObserver) new ResizeObserver(fit).observe(document.documentElement);
+(function(){ var q=new URLSearchParams(location.search); if(q.get('view')==='proto'||q.get('open')==='proto') showView('pw'); if(q.get('step')) setStep(q.get('step')); })();
+</script>
+<script>
+/* GitHub Pages lets browsers keep this page for 10 minutes; if a newer build is live, reload onto it */
+var BUILD='d1';
+fetch(location.pathname+'?cb='+Date.now(),{cache:'no-store'}).then(function(r){ return r.text(); }).then(function(h){
+  var m=h.match(/var BUILD='([^']+)'/); if(m && m[1]!==BUILD){ var q=new URLSearchParams(location.search); q.set('v',m[1]); location.replace(location.pathname+'?'+q.toString()); }
+}).catch(function(){});
+</script>
+</body>
+</html>
